@@ -5,11 +5,11 @@
     <string name="create_account">Create Account</string>
     <string name="skip_now">Skip Now</string>
     <string name="welcome_back">Welcome Back!</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="email">Email*</string>
+    <string name="password">Password*</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password">Confirm Password*</string>
     <string name="signup_info">By clicking continue, you will proceed to the verification</string>
     <string name="continue_btn_label">Continue</string>
     <string name="already_have_an_account">Already have an account?</string>
@@ -47,4 +47,8 @@
     <string name="fragment_add_request_title">Request For Blood</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
+    <string name="username">Username*</string>
+    <string name="fullname">Fullname*</string>
+    <string name="contact">Contact*</string>
+    <string name="blood_group">Blood Group</string>
 </resources>

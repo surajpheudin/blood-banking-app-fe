@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import np.com.surajphueudin.bloodbankingapp.R;
+import np.com.surajphueudin.bloodbankingapp.utility.Utility;
 
 
 public class FindDonorsFragment extends Fragment {
@@ -23,84 +24,6 @@ public class FindDonorsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    final String[] LOCATIONS
-            = {
-            "achham",
-            "arghakhanchi",
-            "baglung",
-            "baitadi",
-            "bajhang",
-            "bajura",
-            "banke",
-            "bara",
-            "bardiya",
-            "bhaktapur",
-            "bhojpur",
-            "chitwan",
-            "dadeldhura",
-            "dailekh",
-            "dang deukhuri",
-            "darchula",
-            "dhading",
-            "dhankuta",
-            "dhanusa",
-            "dholkha",
-            "dolpa",
-            "doti",
-            "gorkha",
-            "gulmi",
-            "humla",
-            "ilam",
-            "jajarkot",
-            "jhapa",
-            "jumla",
-            "kailali",
-            "kalikot",
-            "kanchanpur",
-            "kapilvastu",
-            "kaski",
-            "kathmandu",
-            "kavrepalanchok",
-            "khotang",
-            "lalitpur",
-            "lamjung",
-            "mahottari",
-            "makwanpur",
-            "manang",
-            "morang",
-            "mugu",
-            "mustang",
-            "myagdi",
-            "nawalparasi",
-            "nuwakot",
-            "okhaldhunga",
-            "palpa",
-            "panchthar",
-            "parbat",
-            "parsa",
-            "pyuthan",
-            "ramechhap",
-            "rasuwa",
-            "rautahat",
-            "rolpa",
-            "rukum",
-            "rupandehi",
-            "salyan",
-            "sankhuwasabha",
-            "saptari",
-            "sarlahi",
-            "sindhuli",
-            "sindhupalchok",
-            "siraha",
-            "solukhumbu",
-            "sunsari",
-            "surkhet",
-            "syangja",
-            "tanahu",
-            "taplejung",
-            "terhathum",
-            "udayapur"
-    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -112,7 +35,7 @@ public class FindDonorsFragment extends Fragment {
         MaterialButtonToggleGroup bloodGroupBtnGroup = view.findViewById(R.id.toggle_button_group);
 
 
-        ArrayAdapter adapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_dropdown_item, LOCATIONS);
+        ArrayAdapter adapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_dropdown_item, Utility.getNepalDistricts());
 
         locations.setAdapter(adapter);
 

@@ -26,7 +26,7 @@ import np.com.surajphueudin.bloodbankingapp.volley.MySingleton;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private void postLogin(HashMap body, EditText[] inputFields) {
+    private void postLogin(HashMap<String, String> body, EditText[] inputFields) {
         String url = "http://10.0.2.2:8000/api/v1/en/auth/login/";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
