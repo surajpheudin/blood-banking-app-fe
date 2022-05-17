@@ -10,51 +10,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+
+import org.json.JSONObject;
 
 import np.com.surajphueudin.bloodbankingapp.fragments.FindDonorsFragment;
 import np.com.surajphueudin.bloodbankingapp.fragments.HistoryFragment;
 import np.com.surajphueudin.bloodbankingapp.fragments.ProfileFragment;
 import np.com.surajphueudin.bloodbankingapp.fragments.RequestsFragment;
+import np.com.surajphueudin.bloodbankingapp.utility.HandleError;
+import np.com.surajphueudin.bloodbankingapp.volley.MySingleton;
 
 public class HomepageActivity extends AppCompatActivity {
 
-
-//    @SuppressLint("NonConstantResourceId")
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-//
-//        FindDonorsFragment firstFragment = new FindDonorsFragment();
-//        RequestsFragment secondFragment = new RequestsFragment();
-//        HistoryFragment thirdFragment = new HistoryFragment();
-//        ProfileFragment fourthFragment = new ProfileFragment();
-//
-//        switch (bottomNavigationView.getSelectedItemId()) {
-//            case R.id.nav_menu_find_donors:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, firstFragment).commit();
-//                break;
-//
-//            case R.id.nav_menu_requests:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, secondFragment).commit();
-//                break;
-//
-//            case R.id.nav_menu_history:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, thirdFragment).commit();
-//                break;
-//
-//            case R.id.nav_menu_profile:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fourthFragment).commit();
-//                break;
-//
-//            default:
-//                Toast.makeText(getApplicationContext(), "Wrong Item", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -69,6 +49,9 @@ public class HomepageActivity extends AppCompatActivity {
         RequestsFragment secondFragment = new RequestsFragment();
         HistoryFragment thirdFragment = new HistoryFragment();
         ProfileFragment fourthFragment = new ProfileFragment();
+
+
+
 
         bottomNavigationView.setSelectedItemId(R.id.nav_menu_find_donors);
 

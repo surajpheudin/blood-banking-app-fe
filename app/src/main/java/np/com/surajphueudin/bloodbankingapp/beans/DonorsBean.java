@@ -27,6 +27,7 @@ public class DonorsBean implements Serializable {
         this.contact = contact;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }

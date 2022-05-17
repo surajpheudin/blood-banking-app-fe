@@ -15,9 +15,9 @@ import np.com.surajphueudin.bloodbankingapp.beans.DonorsBean;
 import np.com.surajphueudin.bloodbankingapp.adapters.RecentDonationsAdapter;
 
 public class RecentDonationsFragment extends Fragment {
-    DonorsBean[] names={
+    DonorsBean[] names = {
             new DonorsBean("Random Person", "B+", "21 Jestha", "3:00 pm", "New Baneshwor, Kathmandu", "4 months ago", "9888888888"),
-            new DonorsBean("Hello World", "A+", "3 March", "5:12pm", "Godawari, Lalitpur","2 months ago", "9888888888"),
+            new DonorsBean("Hello World", "A+", "3 March", "5:12pm", "Godawari, Lalitpur", "2 months ago", "9888888888"),
     };
 
     private RecyclerView recyclerView;
@@ -27,7 +27,6 @@ public class RecentDonationsFragment extends Fragment {
     public RecentDonationsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

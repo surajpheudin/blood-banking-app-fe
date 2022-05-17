@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import np.com.surajphueudin.bloodbankingapp.R;
 import np.com.surajphueudin.bloodbankingapp.beans.DonorsBean;
+import np.com.surajphueudin.bloodbankingapp.utility.Utility;
 
 public class SearchedDonationsAdapter extends RecyclerView.Adapter<SearchedDonationsViewHolder> {
 
@@ -35,9 +36,9 @@ public class SearchedDonationsAdapter extends RecyclerView.Adapter<SearchedDonat
     public void
     onBindViewHolder(final SearchedDonationsViewHolder viewHolder, final int position) {
         viewHolder.name.setText(donors[position].getName());
-        viewHolder.bloodGroup.setText(donors[position].getBloodGroup());
+        viewHolder.bloodGroup.setText(Utility.toBloodGroupShortcut(donors[position].getBloodGroup()));
         viewHolder.location.setText(donors[position].getLocation());
-        viewHolder.lastDonation.setText(donors[position].getLastDonation());
+        viewHolder.lastDonation.setText(Utility.formatDate(donors[position].getLastDonation()));
     }
 
     @Override

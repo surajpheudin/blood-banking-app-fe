@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.login_btn);
         Button signupButton = findViewById(R.id.signup_btn);
         Button skipButton = findViewById(R.id.skip_btn);
+
+
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

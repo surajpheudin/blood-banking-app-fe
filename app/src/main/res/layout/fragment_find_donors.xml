@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,87 +25,102 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Choose Blood Group"
         android:layout_marginBottom="12dp"
+        android:text="Choose Blood Group"
         android:textColor="#333333" />
 
-    <TableLayout
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggle_button_group"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        >
-
-        <TableRow android:background="@drawable/border_shadow">
-
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="A+" />
-
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="A-" />
-
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="B+" />
-
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="B-" />
+        android:layout_height="wrap_content">
 
 
-        </TableRow>
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A+" />
 
-        <TableRow android:background="@drawable/border_shadow">
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A-" />
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B+" />
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B-" />
 
 
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="AB+" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="AB-" />
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggle_button_group_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="O+" />
 
-            <android.widget.Button
-                android:background="@color/white"
-                android:text="O-" />
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AB+" />
 
-        </TableRow>
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AB-" />
 
-    </TableLayout>
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="O+" />
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="O-" />
+
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/location"
         android:layout_marginBottom="12dp"
+        android:text="@string/location"
         android:textColor="#333333" />
 
     <Spinner
-        android:background="@drawable/border_shadow"
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_shadow" />
 
 
     <android.widget.Button
         android:id="@+id/search_donor_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:height="50dp"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/primary_main"
-        android:textColor="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/search_donor"
-        />
+        android:textColor="@color/white" />
 
 
 </LinearLayout>
