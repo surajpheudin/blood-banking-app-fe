@@ -16,17 +16,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import np.com.surajphueudin.bloodbankingapp.sqlite.MyDbHelper;
 import np.com.surajphueudin.bloodbankingapp.utility.HandleError;
 import np.com.surajphueudin.bloodbankingapp.volley.MySingleton;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private void postLogin(HashMap<String, String> body, EditText[] inputFields) {
+    private void postLogin(HashMap<String, String> body, EditText[] inputFields, MyDbHelper myDbHelper) {
         String url = "http://10.0.2.2:8000/api/v1/en/auth/login/";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -35,9 +37,22 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Reset Input Fields
-                        for(EditText field: inputFields){
+                        for (EditText field : inputFields) {
                             field.setText("");
-                        };
+                        }
+                        ;
+                        String id, fullname, email, token;
+                        try {
+                            id = response.getJSONObject("data").getString("id");
+                            fullname = response.getJSONObject("data").getString("fullname");
+                            email = response.getJSONObject("data").getString("email");
+                            token = response.getJSONObject("data").getString("token");
+
+                            myDbHelper.insertTokenData(id, fullname, email, token);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                         Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                         startActivity(intent);
                     }
@@ -68,6 +83,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        MyDbHelper myDbHelper = new MyDbHelper(this);
+
         TextView signupLink = findViewById(R.id.signup_link);
         Button loginButton = findViewById(R.id.login_btn);
         EditText emailInput = findViewById(R.id.input_email);
@@ -89,23 +106,21 @@ public class LoginActivity extends AppCompatActivity {
                 String email = emailInput.getText().toString();
                 String password = passwordInput.getText().toString();
 
-                if(email.equals("") && password.equals("")){
+                if (email.equals("") && password.equals("")) {
                     Toast.makeText(LoginActivity.this, "Email and password are required", Toast.LENGTH_SHORT).show();
-                }else if(email.equals("")){
+                } else if (email.equals("")) {
                     Toast.makeText(LoginActivity.this, "Email is required", Toast.LENGTH_SHORT).show();
-                }else if(password.equals("")){
+                } else if (password.equals("")) {
                     Toast.makeText(LoginActivity.this, "Password is required", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     HashMap<String, String> params = new HashMap<String, String>();
 
                     // on below line we are passing our key
                     // and value pair to our parameters.
                     params.put("email", email);
                     params.put("password", password);
-                    postLogin(params, inputFields);
+                    postLogin(params, inputFields, myDbHelper);
                 }
-
-
             }
         });
     }

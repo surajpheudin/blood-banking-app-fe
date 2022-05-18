@@ -97,7 +97,8 @@
             <android.widget.Button
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:background="@color/primary_light"
+                android:background="@drawable/border_shadow"
+                android:backgroundTint="@color/primary_light"
                 android:textColor="@color/white"
                 android:paddingHorizontal="8dp"
                 android:drawableStart="@drawable/ic_baseline_pending_24"
@@ -108,11 +109,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:background="@color/white"
+                android:background="@drawable/border_shadow"
                 android:textColor="#999999"
                 android:paddingHorizontal="8dp"
                 android:drawablePadding="8dp"
-                android:text="Cancel Request" />
+                android:text="Cancel" />
         </LinearLayout>
 
     </LinearLayout>

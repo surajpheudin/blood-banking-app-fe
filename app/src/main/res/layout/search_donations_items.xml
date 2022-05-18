@@ -38,7 +38,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -56,6 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -71,15 +72,14 @@
                     />
             </LinearLayout>
 
-
         </LinearLayout>
 
         <android.widget.Button
             android:id="@+id/contact"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/rounded_corner"
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/border_shadow"
             android:backgroundTint="@color/primary_main"
             android:drawableStart="@drawable/ic_baseline_call_24"
             android:drawablePadding="8dp"

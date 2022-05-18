@@ -97,22 +97,27 @@
             <android.widget.Button
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:background="@color/primary_main"
+                android:background="@drawable/border_shadow"
+                android:backgroundTint="@color/primary_main"
                 android:textColor="@color/white"
                 android:paddingHorizontal="8dp"
                 android:drawableStart="@drawable/ic_baseline_check_circle_24"
                 android:drawablePadding="8dp"
-                android:text="Accept Request" />
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textAlignment="textStart"
+                android:text="Accept" />
 
             <android.widget.Button
                 android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:background="@color/white"
+                android:background="@drawable/border_shadow"
                 android:textColor="#999999"
                 android:paddingHorizontal="8dp"
                 android:drawablePadding="8dp"
-                android:text="Reject Request" />
+                android:maxLines="1"
+                android:text="Reject" />
         </LinearLayout>
 
     </LinearLayout>

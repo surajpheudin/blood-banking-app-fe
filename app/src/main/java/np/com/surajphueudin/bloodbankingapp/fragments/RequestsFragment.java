@@ -1,5 +1,6 @@
 package np.com.surajphueudin.bloodbankingapp.fragments;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import np.com.surajphueudin.bloodbankingapp.R;
+import np.com.surajphueudin.bloodbankingapp.sqlite.MyDbHelper;
 
 public class RequestsFragment extends Fragment {
 
@@ -26,13 +29,22 @@ public class RequestsFragment extends Fragment {
         RequestsNotSigninFragment firstFragment = new RequestsNotSigninFragment();
         RequestsIfSigninFragment secondFragment = new RequestsIfSigninFragment();
 
-        getParentFragmentManager().beginTransaction().replace(R.id.request_container, firstFragment).commit();
+        MyDbHelper db = new MyDbHelper(getContext());
+        Cursor cursor = db.selectTokenData();
 
+        String token = "";
 
-        if (true) {
-            getParentFragmentManager().beginTransaction().replace(R.id.request_container, secondFragment).commit();
+        while (cursor.moveToNext()) {
+            token = cursor.getString(4);
         }
 
+        if (token.equals("")) {
+            getParentFragmentManager().beginTransaction().replace(R.id.request_container, firstFragment).commit();
+
+        } else {
+            getParentFragmentManager().beginTransaction().replace(R.id.request_container, secondFragment).commit();
+
+        }
 
         return view;
     }
