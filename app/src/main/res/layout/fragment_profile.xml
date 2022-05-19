@@ -38,7 +38,7 @@
                 android:id="@+id/text_blood_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A+"
+                android:text="..."
                 android:textColor="@color/white"
                 android:textSize="30dp" />
         </LinearLayout>
@@ -60,7 +60,7 @@
                     android:id="@+id/text_no_of_dontaions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4"
+                    android:text="..."
                     android:textColor="@color/primary_main"
                     android:textSize="16sp" />
 
@@ -81,7 +81,7 @@
                     android:id="@+id/text_last_donation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="02 Jestha"
+                    android:text="... "
                     android:textColor="@color/primary_main"
                     android:textSize="16sp" />
 

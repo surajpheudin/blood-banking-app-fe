@@ -39,24 +39,28 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/aPositive"
             android:text="A+" />
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/aNegative"
             android:text="A-" />
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/bPositive"
             android:text="B+" />
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/bNegative"
             android:text="B-" />
 
 
@@ -72,24 +76,28 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/abPositive"
             android:text="AB+" />
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/abNegative"
             android:text="AB-" />
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/oPositive"
             android:text="O+" />
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/oNegative"
             android:text="O-" />
 
 

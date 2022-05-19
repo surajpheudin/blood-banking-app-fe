@@ -15,6 +15,7 @@ public class Utility {
 
     private static String[] NEPAL_DISTRICTS
             = {
+            "None",
             "achham",
             "arghakhanchi",
             "baglung",

@@ -39,8 +39,8 @@ public class ListDonorsFragment extends Fragment {
 
     }
 
-    private void handleDataFetching(View view, RecyclerView recyclerView){
-        String url = "http://10.0.2.2:8000/api/v1/en/auth/users/";
+    private void handleDataFetching(View view, RecyclerView recyclerView, String address, String blood_groups){
+        String url = "http://10.0.2.2:8000/api/v1/en/auth/users/?address=" + address + "&blood_group=" + blood_groups ;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -105,12 +105,19 @@ public class ListDonorsFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.fragment_list_donors, container, false);
+        String address = getArguments().getString("address");
+        String blood_groups = getArguments().getString("blood_groups");
+
+        System.out.println(address);
+        System.out.println(blood_groups);
 
         recyclerView = view.findViewById(R.id.donors_list_recycler_view);
         layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        handleDataFetching(view, recyclerView);
+        handleDataFetching(view, recyclerView, address, blood_groups);
+
+
 
         return view;
     }
