@@ -12,9 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -24,6 +27,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import np.com.surajphueudin.bloodbankingapp.HomepageActivity;
 import np.com.surajphueudin.bloodbankingapp.LoginActivity;
 import np.com.surajphueudin.bloodbankingapp.R;
 import np.com.surajphueudin.bloodbankingapp.adapters.SearchedDonationsAdapter;
@@ -39,6 +46,7 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
     private void handleDataFetching(View view, String uid){
+        TextView name = view.findViewById(R.id.text_name);
         TextView bloodGroup = view.findViewById(R.id.text_blood_group);
         TextView noOfDonations = view.findViewById(R.id.text_no_of_dontaions);
         TextView lastDonation = view.findViewById(R.id.text_last_donation);
@@ -54,6 +62,7 @@ public class ProfileFragment extends Fragment {
                         System.out.println(response.toString());
 
                         try {
+                            name.setText(response.getJSONObject("data").getString("fullname"));
                             bloodGroup.setText(Utility.toBloodGroupShortcut(response.getJSONObject("data").getString("blood_group")));
                             noOfDonations.setText("0");
                             lastDonation.setText(Utility.formatDate(response.getJSONObject("data").getString("last_donation")));
@@ -77,6 +86,58 @@ public class ProfileFragment extends Fragment {
     }
 
 
+    private void changeAvailability(Boolean available,String token, View view) {
+        HashMap<String, Boolean> body = new HashMap<String, Boolean>();
+        body.put("available", available);
+
+
+
+        String url = "http://10.0.2.2:8000/api/v1/en/auth/update-profile/";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.PUT, url, new JSONObject(body), new Response.Listener<JSONObject>() {
+
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        MyDbHelper db = new MyDbHelper(getContext());
+
+                        Cursor cursor = db.selectTokenData();
+
+                        String uid = "";
+
+                        while (cursor.moveToNext()) {
+                            uid = cursor.getString(1);
+                        }
+
+                        if(!uid.equals("")){
+                            handleDataFetching(view, uid);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        // TODO: Handle error
+                        System.out.println(volleyError.toString());
+                        HandleError.handleVolleyError(volleyError, getContext());
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                headers.put("Authorization", "Token " + token);
+                return headers;
+            }
+        };
+
+        // Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    ;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -86,20 +147,35 @@ public class ProfileFragment extends Fragment {
 
 
         TextView logoutBtn = view.findViewById(R.id.logout_btn);
+        SwitchCompat availableSwitch = view.findViewById(R.id.switch_available);
 
         MyDbHelper db = new MyDbHelper(getContext());
 
         Cursor cursor = db.selectTokenData();
 
         String uid = "";
-
+        String token = ""
+;
         while (cursor.moveToNext()) {
             uid = cursor.getString(1);
+            token = cursor.getString(4);
+
         }
 
         if(!uid.equals("")){
             handleDataFetching(view, uid);
         }
+
+        String finalToken = token;
+
+        availableSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                changeAvailability(b, finalToken, view);
+            }
+        });
+
+
 
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
